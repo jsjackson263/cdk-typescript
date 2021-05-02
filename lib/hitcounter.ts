@@ -35,5 +35,8 @@ export class HitCounter extends cdk.Construct {
 
         //grant the lambda role read/write permission to dynamodb table
         table.grantReadWriteData(this.handler);
+
+        //grant the lambda role invoke permissions to the downstrem function
+        props.downstream.grantInvoke(this.handler);
     }
 }
